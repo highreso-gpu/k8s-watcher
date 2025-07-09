@@ -1,0 +1,26 @@
+# 全環境共通の設定
+watcher:
+  # 監視間隔（秒）
+  watch_interval: 1
+
+  # ログレベル
+  log_level: INFO
+
+  # 再試行設定
+  retry:
+    max_attempts: 3
+    delay_seconds: 5
+
+clusterapi:
+  # DB更新用のエンドポイント
+  endpoints:
+    pod_update: "/api/pods/update"
+    health: "/health"
+
+  # タイムアウト設定
+  timeout: 30
+
+  # 再試行設定
+  retry:
+    max_attempts: 3
+    delay_seconds: 2

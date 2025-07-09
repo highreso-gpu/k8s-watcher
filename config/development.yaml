@@ -1,0 +1,18 @@
+ # ローカル環境設定
+environment: local
+
+kubernetes:
+  # ローカルのk8s mock用kubeconfig
+  config_file: "./assets/config"
+  use_mock: true
+
+clusterapi:
+  base_url: "http://localhost:3000"
+  auth:
+    api_key: "${CLUSTERAPI_API_KEY}"
+
+watcher:
+  namespaces:
+    - default
+    - kube-system
+  log_level: DEBUG

@@ -1,0 +1,25 @@
+# 本番環境設定
+environment: production
+
+kubernetes:
+  # 本番環境では実際のK8sクラスタを使用
+  use_incluster_config: true
+  # または外部からアクセスする場合
+  # config_file: "/etc/kubeconfig/production-config"
+
+clusterapi:
+  base_url: "https://prod-clusterapi.example.com"
+  auth:
+    api_key: "${PROD_CLUSTERAPI_API_KEY}"
+
+watcher:
+  namespaces:
+    - default
+    - production
+    - monitoring
+    - kube-system
+  log_level: WARNING  # 本番では警告レベル以上のみ
+
+  # 本番用の追加設定
+  alerts:
+    critical_events_only: true
