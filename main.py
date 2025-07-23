@@ -1,4 +1,6 @@
-from watcher.pod_watcher import PodWatcher
+from watcher.multi_cluster_pod_phase_watcher import MultiClusterPodPhaseWatcher
+# from watcher.pod_phase_watcher import PodPhaseWatcher
+
 import sys
 import os
 
@@ -20,10 +22,13 @@ def main():
 
     # Pod Watcherを作成・開始
     try:
-        watcher = PodWatcher(environment=environment)
-        watcher.start_watching()
+        # ここでPodPhaseWatcherを使う場合はコメントアウトを外してください
+        # watcher = PodPhaseWatcher(environment=environment)
+        # watcher.start_watching()
+        watcher = MultiClusterPodPhaseWatcher(environment=environment)
+        watcher.start_watching_all_clusters()
     except Exception as e:
-        print(f"Error starting watcher: {e}")
+        print(f"Error starting watchers: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":

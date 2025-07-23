@@ -8,7 +8,7 @@ kubernetes:
   # config_file: "/etc/kubeconfig/production-config"
 
 clusterapi:
-  base_url: "https://prod-clusterapi.example.com"
+  base_url: "https://clusterapi.highreso.jp/api/v1"
   auth:
     api_key: "${PROD_CLUSTERAPI_API_KEY}"
 
