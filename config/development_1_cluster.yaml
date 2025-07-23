@@ -13,14 +13,4 @@ clusterapi:
     api_key: "${CLUSTERAPI_API_KEY}"
 
 watcher:
-  # namespaces:
-  #   - default
-  #   - kube-system
   log_level: DEBUG
-
-
-#  clusters:
-#     - name: "ol"
-#       host: "https://192.168.11.181:6443"
-#       verify_ssl: false  # SSL証明書の検証を無効化（開発環境用）
-#       token: "eyJhbGciOiJSUzI1NiIsImtpZCI6InlTQzlfTzQzTXZVREl4LWpDLWt5dDBicTVNcjMwNmloUFVZNTE2MHhTa0UifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJhcGktc3lzdGVtIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImRlZmF1bHQtdG9rZW4tdnR0cW4iLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGVmYXVsdCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImVkNDNmMzU4LTE5ZDctNGFmOS1iYjJhLTIxZjI3MDZkMzY1MCIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDphcGktc3lzdGVtOmRlZmF1bHQifQ.i6KCKnG8PNYBlgOudJiBBcr4Rb6shhQkwEtKj9cFMUERcbykmn6IbZ4CwFa82igV4iurb5c1-64f5ZiThm9KJw4hFk0-IkCav53_9l43UlIqhmpG7DvSmJTJtxUGKfq237K5zBEvQHdW0YctoenP5-eHWL8XBMkfA8V7FB5x3pwbGz9MU-u7KAWOD2bFWL00NdtKUoJf7JDhLOEoNDciEb5dXqJa8rXGjccLXVReMG2WRhPppx4IelUqpBIwPKrvYZH_l8kGZIpH_5j8aZkEALuaylBswPC9pyOdsmbYpgXlpChtKIl-rA-RYeVpLYUSEDpeKSuZBFZfHjMIrR-CdA"  # 取得したトークンを設定
