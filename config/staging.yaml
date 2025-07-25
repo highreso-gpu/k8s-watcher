@@ -1,0 +1,20 @@
+# ステージング環境設定
+environment: staging
+
+kubernetes:
+  # ステージング環境では実際のK8sクラスタを使用
+  use_incluster_config: true
+  # または外部からアクセスする場合
+  # config_file: "/etc/kubeconfig/staging-config"
+
+clusterapi:
+  base_url: "https://clusterapi-stg.highreso.jp/api/v1"
+  auth:
+    api_key: "${STAGING_CLUSTERAPI_API_KEY}"
+
+watcher:
+  namespaces:
+    - default
+    - staging
+    - monitoring
+  log_level: INFO
