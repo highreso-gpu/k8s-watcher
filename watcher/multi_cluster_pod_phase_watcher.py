@@ -334,7 +334,7 @@ class MultiClusterPodPhaseWatcher:
         should_notify = self._should_notify_phase_change(pod_key, current_phase)
         self.logger.debug(f"[{cluster_name}] Should notify phase change: {should_notify}")
 
-        if should_notify or event_type == 'DELETED':
+        if should_notify:
             self.logger.debug(f"[{cluster_name}] Processing phase change for pod {namespace}/{pod_name} - {current_phase}")
             previous_phase = self.pod_phase_history.get(pod_key, {}).get("phase", "None")
 
@@ -375,8 +375,17 @@ class MultiClusterPodPhaseWatcher:
             "environment": self.environment,
             "event_timestamp": datetime.now().isoformat(),
         }
-        return self.clusterapi_client.pvc_event(pvc_data)
-        # 必要に応じてClusterAPI等へ通知
+        if event_type == 'DELETED':
+            # PVC削除イベントの処理
+            self.logger.info(f"[{cluster_name}] PVC deleted: {pvc.metadata.name} in namespace {pvc.metadata.namespace}")
+            # ClusterAPIに通知
+            return self.clusterapi_client.pvc_event(pvc_data)
+        elif event_type == 'ADDED' or event_type == 'MODIFIED':
+            # PVC追加または変更イベントの処理
+            self.logger.info(f"[{cluster_name}] PVC added/modified: {pvc.metadata.name} in namespace {pvc.metadata.namespace}")
+        else:
+            # その他のイベントタイプの処理
+            self.logger.warning(f"[{cluster_name}] Unhandled PVC event type: {event_type}")
     
     def _extract_pod_phase_data(self, pod, cluster_name: str) -> Dict[str, Any]:
         """Pod phaseに特化したデータ抽出（クラスタ名を含む）"""
